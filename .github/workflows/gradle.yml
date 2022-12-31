@@ -1,0 +1,40 @@
+name: Java CI
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: 'GeyserMC/Geyser'
+          submodules: true
+
+      - name: Remove Xbox account validation
+        run: sed -i '/boolean validateChainData/a return true;' core/src/main/java/org/geysermc/geyser/util/LoginEncryptionUtils.java
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: current
+
+      - name: Build with Gradle
+        run: gradle build
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: bootstrap/*/build/libs/Geyser-*.jar
+          if-no-files-found: error

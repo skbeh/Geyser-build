@@ -33,8 +33,16 @@ jobs:
       - name: Build with Gradle
         run: gradle build
 
-      - name: Upload Artifacts
+      - name: Upload velocity variants
         uses: actions/upload-artifact@v3
         with:
+          name: Geyser-Velocity
+          path: bootstrap/velocity/build/libs/Geyser-Velocity.jar
+          if-no-files-found: error
+
+      - name: Upload all variants
+        uses: actions/upload-artifact@v3
+        with:
+          name: all
           path: bootstrap/*/build/libs/Geyser-*.jar
           if-no-files-found: error

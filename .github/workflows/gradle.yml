@@ -21,7 +21,6 @@ jobs:
 
       - name: Patch JVM target to Java 17
         run: |
-          sed -i 's/"16"/"17"/' build-logic/build.gradle.kts
           sed -i 's/JavaVersion.VERSION_16/JavaVersion.VERSION_17/g' build-logic/src/main/kotlin/geyser.base-conventions.gradle.kts
 
       - name: Set up JDK 17

@@ -35,7 +35,7 @@ jobs:
           gradle-version: current
 
       - name: Build with Gradle
-        run: gradle build
+        run: gradle build --stacktrace
 
       - name: Upload velocity variants
         uses: actions/upload-artifact@v3

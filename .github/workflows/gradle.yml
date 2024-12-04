@@ -24,7 +24,7 @@ jobs:
           sed -i 's/target(8)/target(21)/' common/build.gradle.kts
 
       - name: Build with Gradle
-        run: gradle build --stacktrace
+        run: ./gradlew build
 
       - name: Upload velocity variants
         uses: actions/upload-artifact@v4

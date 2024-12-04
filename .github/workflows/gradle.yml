@@ -21,7 +21,7 @@ jobs:
         run: |
           sed -i 's/8.1.1/8.3.5/; s/com.github.johnrengelman/com.gradleup.shadow/; s/name = "shadow"/name = "shadow-gradle-plugin"/' gradle/libs.versions.toml
           sed -i 's/com.github.johnrengelman.shadow/com.gradleup.shadow/' build-logic/src/main/kotlin/geyser.shadow-conventions.gradle.kts
-          sed -i 's/target(8)/target(21)/' common/build.gradle.kts
+          sed -i 's/target(8)/target(17)/' common/build.gradle.kts
 
       - name: Build with Gradle
         run: ./gradlew build

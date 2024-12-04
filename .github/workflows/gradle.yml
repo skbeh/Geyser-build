@@ -15,6 +15,7 @@ jobs:
         uses: GeyserMC/actions/setup-gradle-composite@master
         with:
           setup-java_java-version: 21
+          checkout_repository: 'GeyserMC/Geyser'
 
       - name: Patch JVM target to Java 21
         run: |
